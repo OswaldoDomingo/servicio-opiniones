@@ -10,9 +10,11 @@ class PostController extends Controller
     {
         return view('posts.index');
     }
-    public function store()
+
+    public function store(Request $request)
     {
-        // guardar
+        // Envía todos los datos del formulario
+        return $request->all();
     }
     public function destroy()
     {
