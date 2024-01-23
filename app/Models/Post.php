@@ -13,6 +13,8 @@ class Post extends Model
     protected $fillable = ['body'];
     //Si no se hace así, cuando se cree un registro nuevo creará un error de asignación masiva
     // la propiedad $fillable en un modelo es usada para especificar qué campos pueden ser asignados de manera masiva. Esto es una medida de seguridad que previene que los usuarios cambien campos sensibles de la base de datos que no deberían ser modificados directamente.
+    //Se crea la propiedad protegida $with para que cuando se haga una consulta a la base de datos, se incluya el usuario que creó el post
+    protected $with = ['user'];
 
     public function user() {
         // Un post pertenece a un usuario
