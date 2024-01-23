@@ -10,13 +10,17 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <!-- {{ __("Formulario") }} -->
+                    <!-- Feedback que se ha guardado correctamente -->
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
+                    <!-- Feedback que hubi errores -->
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <!-- action es el método o la ruta que queremos usar store será lo que usemos para salvar la información en la tabla. Colocamos el nombre que se le ha dado en la ruta -->
                     <form action="{{ route('posts.store') }}" method="POST">
                         @csrf
-                        <!-- csrf es el token de seguridad para que lños formularios sean seguros -->
+                        <!-- csrf es el token de seguridad para que los formularios sean seguros -->
                         <div class="m-t-4">
                             <x-input-label for="body" :value="__('Body')" />
-                            <x-textarea id="body" class="block mt-1 w-full" type="text" name="body" required />
+                            <x-textarea id="body" class="block mt-1 w-full" type="text" name="body" required/>
                         </div>
                         <!-- Botón de guardar -->
                         <div class="flex justify-end mt-4">
