@@ -11,9 +11,9 @@
                 <div class="p-6 text-gray-900">
                     <!-- {{ __("Formulario") }} -->
                     <!-- Feedback que se ha guardado correctamente -->
-                    <x-auth-session-status class="mb-4" :status="session('status')" />
+                    <x-session-status class="mb-4" :status="session('status')" />
                     <!-- Feedback que hubi errores -->
-                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                    <x-validation-errors class="mb-4" :errors="$errors" />
                     <!-- action es el método o la ruta que queremos usar store será lo que usemos para salvar la información en la tabla. Colocamos el nombre que se le ha dado en la ruta -->
                     <form action="{{ route('posts.store') }}" method="POST">
                         @csrf
