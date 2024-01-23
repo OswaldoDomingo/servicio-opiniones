@@ -32,9 +32,11 @@ class PostController extends Controller
         // Redirigimos a la página principal
         return back()->with('status', 'Publicación guardada!');
     }
-    public function destroy()
-    {
-        // eliminar
+    public function destroy(Post $post)
+    {   //Se le pasa el modelo Post y se le pasa el id del post que se quiere eliminar
+        $post->delete();
+        // Redirigimos a la página principal con un mensaje de confirmación 
+        return back()->with('status', 'Publicación eliminada!');
     }
     
 }
