@@ -37,16 +37,24 @@ class PostController extends Controller
     // añadimos el request para que solo el usuario que ha creado el post pueda eliminarlo
     public function destroy(Request $request, Post $post)
     {   
-        //Veamos el id del yusuario que sale en la consola 
+        //Veamos el id del usuario que sale en la consola 
         //dd($request->user()->id); // 1 app\Http\Controllers\PostController.php:39'
         //vamos a crear la condición para que solo el usuario que ha creado el post pueda eliminarlo
         //Si el id del usuario que ha creado el post es igual al id del usuario que está autenticado entonces se puede eliminar el post.
-        if($request->user()->id !== $post->user_id){
-            //Si no es así entonces se aborta la operación y se muestra un error 403 el servidor detecta que el usuario no tiene permisos para realizar la acción
-            abort(403);
-            //Si no es así entonces se redirige a la página principal
-            //return redirect()->route('home');
-        }
+        //Cambiado en el video Politica de acceso centralizada
+                // if($request->user()->id !== $post->user_id){
+                //     //Si no es así entonces se aborta la operación y se muestra un error 403 el servidor detecta que el usuario no tiene permisos para realizar la acción
+                //     abort(403);
+                //     //Si no es así entonces se redirige a la página principal
+                //     //return redirect()->route('home');
+                // }
+        //Fin cambiado en el video Politica de acceso centralizada
+        
+        //Añadido en el video Politica de acceso centralizada
+        //Se le pasa el modelo Post y se le pasa el id del post que se quiere eliminar
+        $this->authorize('destroy-post', $post);
+        //Fin añadido en el video Politica de acceso centralizada
+        
         //Se le pasa el modelo Post y se le pasa el id del post que se quiere eliminar
         $post->delete();
         // Redirigimos a la página principal con un mensaje de confirmación 
