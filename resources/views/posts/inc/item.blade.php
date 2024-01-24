@@ -6,7 +6,8 @@
      </em>
      {{ $post->body }}
  </p>
- @can('destroy-post', $post)
+
+ @can('delete', $post)
  <!-- // En la acccion ponemos la ruta de eliminar y le pasamos el id del post  -->
  <form action="{{ route('posts.destroy', $post) }}" method="POST">
      <!-- // Se le pasa el token de seguridad -->

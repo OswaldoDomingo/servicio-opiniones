@@ -52,7 +52,7 @@ class PostController extends Controller
         
         //Añadido en el video Politica de acceso centralizada
         //Se le pasa el modelo Post y se le pasa el id del post que se quiere eliminar
-        $this->authorize('destroy-post', $post);
+        $this->authorize('delete', $post);
         //Fin añadido en el video Politica de acceso centralizada
         
         //Se le pasa el modelo Post y se le pasa el id del post que se quiere eliminar
